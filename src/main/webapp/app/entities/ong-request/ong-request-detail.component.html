@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ongRequest">
+            <h2><span jhiTranslate="volunteerApp.ongRequest.detail.title">Ong Request</span> {{ongRequest.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="volunteerApp.ongRequest.name">Name</span></dt>
+                <dd>
+                    <span>{{ongRequest.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.ongRequest.idno">Idno</span></dt>
+                <dd>
+                    <span>{{ongRequest.idno}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.ongRequest.registrationDate">Registration Date</span></dt>
+                <dd>
+                    <span>{{ongRequest.registrationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.ongRequest.user">User</span></dt>
+                <dd>
+                    {{ongRequest.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ong-request', ongRequest.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

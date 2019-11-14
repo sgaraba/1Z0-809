@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="volunteerRequest">
+            <h2><span jhiTranslate="volunteerApp.volunteerRequest.detail.title">Volunteer Request</span> {{volunteerRequest.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="volunteerApp.volunteerRequest.registrationDate">Registration Date</span></dt>
+                <dd>
+                    <span>{{volunteerRequest.registrationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.volunteerRequest.user">User</span></dt>
+                <dd>
+                    {{volunteerRequest.user?.login}}
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.volunteerRequest.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="volunteerRequest.project">
+                        <a [routerLink]="['/project', volunteerRequest.project?.id, 'view']">{{volunteerRequest.project?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/volunteer-request', volunteerRequest.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

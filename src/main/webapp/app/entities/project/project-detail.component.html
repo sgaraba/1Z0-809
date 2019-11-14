@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="project">
+            <h2><span jhiTranslate="volunteerApp.project.detail.title">Project</span> {{project.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="volunteerApp.project.name">Name</span></dt>
+                <dd>
+                    <span>{{project.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.project.description">Description</span></dt>
+                <dd>
+                    <span>{{project.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.project.registrationDate">Registration Date</span></dt>
+                <dd>
+                    <span>{{project.registrationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.project.status">Status</span></dt>
+                <dd>
+                    <div *ngIf="project.status">
+                        <a [routerLink]="['/status', project.status?.id, 'view']">{{project.status?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.project.category">Category</span></dt>
+                <dd>
+                    <div *ngIf="project.category">
+                        <a [routerLink]="['/category', project.category?.id, 'view']">{{project.category?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.project.user">User</span></dt>
+                <dd>
+                    <span *ngFor="let user of project.users; let last = last">
+                        {{user.login}}{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.project.ong">Ong</span></dt>
+                <dd>
+                    <div *ngIf="project.ong">
+                        <a [routerLink]="['/ong', project.ong?.id, 'view']">{{project.ong?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/project', project.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

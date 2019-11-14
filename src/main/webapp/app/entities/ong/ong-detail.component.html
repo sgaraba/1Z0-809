@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ong">
+            <h2><span jhiTranslate="volunteerApp.ong.detail.title">Ong</span> {{ong.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="volunteerApp.ong.name">Name</span></dt>
+                <dd>
+                    <span>{{ong.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.ong.description">Description</span></dt>
+                <dd>
+                    <span>{{ong.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.ong.idno">Idno</span></dt>
+                <dd>
+                    <span>{{ong.idno}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.ong.email">Email</span></dt>
+                <dd>
+                    <span>{{ong.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.ong.address">Address</span></dt>
+                <dd>
+                    <span>{{ong.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="volunteerApp.ong.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ong.phone}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ong', ong.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
